@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace CompanyABC.WebClient
 {
@@ -8,28 +7,43 @@ namespace CompanyABC.WebClient
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+            BundleScripts(bundles);
+            BundleStyles(bundles);
+#if DEBUG
+            BundleTable.EnableOptimizations = false;
+#else
+            BundleTable.EnableOptimizations = true;
+#endif
+        }
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.validate*"));
+        private static void BundleScripts(BundleCollection bundles)
+        {
+            bundles.Add(new ScriptBundle("~/bundles/jquery",
+                "//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js")
+                .Include("~/scripts/jquery-1.10.2.js"));
 
-            // Use the development version of Modernizr to develop with and learn from. Then, when you're
-            // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap",
+                "//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.js")
+                .Include("~/scripts/bootstrap.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+            bundles.Add(new ScriptBundle("~/bundles/angular-core")
+                .Include("~/scripts/angular-ui-router.js")
+                .Include("~/app/app.js")
+                .IncludeDirectory("~/app/controllers", "*.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/misc")
+                .Include("~/scripts/toastr.js"));
+        }
+
+        private static void BundleStyles(BundleCollection bundles)
+        {
+            bundles.Add(new StyleBundle("~/content/bootstrap",
+                "//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css").Include(
+                    "~/Content/bootstrap.css"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
-
-            // Set EnableOptimizations to false for debugging. For more information,
-            // visit http://go.microsoft.com/fwlink/?LinkId=301862
-            BundleTable.EnableOptimizations = true;
+                "~/Content/toastr.css",
+                "~/Content/site.css"));
         }
     }
 }

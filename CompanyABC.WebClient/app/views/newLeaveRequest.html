@@ -1,0 +1,35 @@
+﻿<div class="panel panel-default" ng-submit="submitNewLeaveRequest()">
+    <div class="panel-heading">New Leave Request</div>
+    <div class="panel-body">
+
+        <form role="form">
+            <div class="form-group">
+                <label for="startDate">Start date</label>
+                <input type="email" class="form-control" id="startDate" placeholder="Start date">
+            </div>
+            <div class="form-group">
+                <label for="endDate">End date</label>
+                <input type="email" class="form-control" id="endDate" placeholder="End date">
+            </div>
+            <div class="form-group">
+                <label for="reasonDropdown">Reason</label>
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="reasonDropdown" data-toggle="dropdown" aria-expanded="true">
+                        Reason
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="reasonDropdown">
+                        <li ng-repeat="reason in lookups.reasons | orderBy: 'name'" role="presentation"><a role="menuitem" class="link" ng-bind="reason.name">Action</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="comments">Comments</label>
+                <textarea class="form-control" id="comments"></textarea>
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    </div>
+</div>
+
+<!--start and end date; a reason (Annual, Personal, Compassionate or Parental); and comments, and .--> 
