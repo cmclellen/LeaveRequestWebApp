@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.Http;
 
 using CompanyABC.Core.Config;
+using CompanyABC.WebApi.DTOs.Responses;
 using CompanyABC.WebApi.Models;
 
 using Utils;
@@ -32,7 +33,7 @@ namespace CompanyABC.WebApi.Controllers
                 new Reason {DisplayName = "Parental"},
             };
 
-            return Ok(new
+            return Ok(new GetReasonsResponse
             {
                 Reasons = reasons
             });

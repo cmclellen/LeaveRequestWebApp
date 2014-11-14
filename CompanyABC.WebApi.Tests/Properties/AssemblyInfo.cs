@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("CompanyABC.WebApi")]
+[assembly: AssemblyTitle("CompanyABC.WebApi.Tests")]
 [assembly: AssemblyDescription("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -18,4 +18,4 @@ using System.Runtime.InteropServices;
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 
-[assembly: Guid("8d51fa52-fcf0-4a53-8d9c-372dd4200a5c")]
+[assembly: Guid("a820880d-4361-4ba6-b52a-c8de2c63fae7")]
