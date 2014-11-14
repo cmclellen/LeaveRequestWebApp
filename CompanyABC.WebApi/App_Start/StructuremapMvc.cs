@@ -45,6 +45,7 @@ namespace CompanyABC.WebApi.App_Start
         {
             IContainer container = IoC.Initialize();
             StructureMapDependencyScope = new StructureMapDependencyScope(container);
+
             //DependencyResolver.SetResolver(StructureMapDependencyScope);
             DynamicModuleUtility.RegisterModule(typeof (StructureMapScopeModule));
         }

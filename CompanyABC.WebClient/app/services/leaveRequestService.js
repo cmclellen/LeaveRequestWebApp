@@ -6,9 +6,12 @@ myApp.factory('leaveRequestService', ['$http', '$q', 'eventbusService', function
     var urlBase = CompanyABC.WebApi.mapPath('api/LeaveRequest/');
 
     function getReasons() {
+        var config = {
+            cache: true
+        };
         var deferred = $q.defer();
         var url = urlBase.concat('GetReasons');
-        $http.get(url)
+        $http.get(url, config)
             .success(function (response) {
                 deferred.resolve(response);
             }).error(function (err, status) {

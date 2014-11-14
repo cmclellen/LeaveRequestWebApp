@@ -26,7 +26,7 @@ using StructureMap.TypeRules;
 
 namespace CompanyABC.WebApi.DependencyResolution
 {
-    public class ControllerConvention : IRegistrationConvention
+    public class ApiControllerConvention : IRegistrationConvention
     {
         public void Process(Type type, Registry registry)
         {

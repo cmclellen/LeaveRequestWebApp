@@ -34,7 +34,7 @@ namespace CompanyABC.WebApi.DependencyResolution
                 {
                     scan.TheCallingAssembly();
                     scan.WithDefaultConventions();
-                    scan.With(new ControllerConvention());
+                    scan.With(new ApiControllerConvention());
                 });
             For<IApplicationSettings>().Use<SystemApplicationSettings>();
         }

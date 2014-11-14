@@ -3,6 +3,9 @@ using System.Linq;
 using System.Net.Http.Formatting;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using System.Web.Http.Dispatcher;
+
+using CompanyABC.WebApi.DependencyResolution;
 
 using Newtonsoft.Json.Serialization;
 
@@ -19,6 +22,9 @@ namespace CompanyABC.WebApi
 
             config.Routes.MapHttpRoute("DefaultApi", "api/{controller}/{id}", new {id = RouteParameter.Optional}
                 );
+
+            config.Services
+                  .Replace(typeof(IHttpControllerActivator), new ServiceActivator(config));
 
             config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
 

@@ -13,11 +13,11 @@ namespace CompanyABC.WebApi.Controllers
     [AllowAnonymous]
     public class LeaveRequestController : ApiController
     {
-        //public LeaveRequestController(IApplicationSettings applicationSettings)
-        //{
-        //    Guard.NotNull(() => applicationSettings, applicationSettings);
-        //    ApplicationSettings = applicationSettings;
-        //}
+        public LeaveRequestController(IApplicationSettings applicationSettings)
+        {
+            Guard.NotNull(() => applicationSettings, applicationSettings);
+            ApplicationSettings = applicationSettings;
+        }
 
         IApplicationSettings ApplicationSettings { get; set; }
 

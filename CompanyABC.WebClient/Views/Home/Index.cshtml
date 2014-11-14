@@ -11,7 +11,7 @@
     
     <div ui-view></div>
     
-    @Html.Partial("_JsConstants")
+    @Html.Action("JsConstants")
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/misc")

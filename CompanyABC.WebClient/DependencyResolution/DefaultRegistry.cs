@@ -15,23 +15,28 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CompanyABC.WebClient.DependencyResolution {
-    using StructureMap.Configuration.DSL;
-    using StructureMap.Graph;
-	
-    public class DefaultRegistry : Registry {
-        #region Constructors and Destructors
+using System;
+using System.Linq;
 
-        public DefaultRegistry() {
+using CompanyABC.Core.Config;
+
+using StructureMap.Configuration.DSL;
+using StructureMap.Graph;
+
+namespace CompanyABC.WebClient.DependencyResolution
+{
+    public class DefaultRegistry : Registry
+    {
+        public DefaultRegistry()
+        {
             Scan(
-                scan => {
+                scan =>
+                {
                     scan.TheCallingAssembly();
                     scan.WithDefaultConventions();
-					scan.With(new ControllerConvention());
+                    scan.With(new ControllerConvention());
                 });
-            //For<IExample>().Use<Example>();
+            For<IApplicationSettings>().Use<SystemApplicationSettings>();
         }
-
-        #endregion
     }
 }

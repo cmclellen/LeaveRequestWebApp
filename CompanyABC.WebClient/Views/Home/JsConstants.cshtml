@@ -1,0 +1,13 @@
+﻿@model CompanyABC.WebClient.Models.JsConstantsViewModel
+
+<script type="text/javascript">
+
+    var CompanyABC = {
+        constants: {
+            WebApi_Url: '@Model.ApplicationSettings["web_api.url"]'
+        }
+    };
+
+    console.log('constants', CompanyABC.constants);
+
+</script>
