@@ -1,4 +1,4 @@
-﻿myApp.controller('NewLeaveRequestController', ['$scope', function ($scope) {
+﻿myApp.controller('NewLeaveRequestController', ['$scope', 'leaveRequestService', function ($scope, leaveRequestService) {
 
     $scope.lookups = {
         reasons: null
@@ -14,12 +14,14 @@
 
     function initialize() {
         var lookups = $scope.lookups;
-        lookups.reasons = [
-            { name: 'Annual' },
-            { name: 'Personal' },
-            { name: 'Compassionate' },
-            { name: 'Parental' }
-        ];
+
+        console.log('calling service...');
+        leaveRequestService.getReasons().then(function (response) {
+            lookups.reasons = response.reasons;
+        }, function (err) {
+            console.log('err', err);
+            
+        });
     }
     initialize();
 

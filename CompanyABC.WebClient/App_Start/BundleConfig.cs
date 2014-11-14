@@ -26,9 +26,14 @@ namespace CompanyABC.WebClient
                 "//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.js")
                 .Include("~/scripts/bootstrap.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/core")
+                .Include("~/app/string.js")
+                .Include("~/app/utils.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/angular-core")
                 .Include("~/scripts/angular-ui-router.js")
                 .Include("~/app/app.js")
+                .IncludeDirectory("~/app/services", "*.js")
                 .IncludeDirectory("~/app/controllers", "*.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/misc")
