@@ -3,7 +3,8 @@
 myApp.controller('LayoutController', ['$scope', 'leaveRequestService', function ($scope, leaveRequestService) {
     
     $scope.data = {
-        users: null
+        users: null,
+        userId: null
     };
 
     function initialize() {

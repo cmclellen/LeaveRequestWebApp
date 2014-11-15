@@ -29,17 +29,13 @@
                 
                 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Logged in as</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">User <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li ng-if="data.users === null"><a></a></li>
-                            <li ng-if="data.users !== null"  ng-repeat="user in data.users"><a ng-bind="user.username"></a></li>
-                            <!--<li><a href="#">Employee2</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Manager1</a></li>
-                                <li><a href="#">Manager2</a></li>-->
-                        </ul>
+                    <li>
+                        <a href="#">
+                                <label for="userSelect">Logged in as</label>
+                            <select id="userSelect" ng-model="data.userId" ng-options="user.id as user.username for user in data.users | orderBy: 'username'">
+                                <option value="" disabled selected style='display: none;'>Select user...</option>
+                            </select>
+                        </a>
                     </li>
                 </ul>
             </div>
