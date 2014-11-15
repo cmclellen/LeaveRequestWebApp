@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace CompanyABC.WebApi.Models
+namespace CompanyABC.WebApi.DTOs
 {
     public class Reason : IEquatable<Reason>
     {

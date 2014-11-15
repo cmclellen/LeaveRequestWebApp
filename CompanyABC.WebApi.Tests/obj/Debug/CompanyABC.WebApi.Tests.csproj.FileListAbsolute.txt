@@ -32,3 +32,14 @@ C:\Important\_private\LeaveRequestWebApp\CompanyABC.WebApi.Tests\bin\Debug\Struc
 C:\Important\_private\LeaveRequestWebApp\CompanyABC.WebApi.Tests\obj\Debug\CompanyABC.WebApi.Tests.csprojResolveAssemblyReference.cache
 C:\Important\_private\LeaveRequestWebApp\CompanyABC.WebApi.Tests\obj\Debug\CompanyABC.WebApi.Tests.dll
 C:\Important\_private\LeaveRequestWebApp\CompanyABC.WebApi.Tests\obj\Debug\CompanyABC.WebApi.Tests.pdb
+C:\Important\_private\LeaveRequestWebApp\CompanyABC.WebApi.Tests\bin\Debug\CompanyABC.Data.dll
+C:\Important\_private\LeaveRequestWebApp\CompanyABC.WebApi.Tests\bin\Debug\EntityFramework.dll
+C:\Important\_private\LeaveRequestWebApp\CompanyABC.WebApi.Tests\bin\Debug\EntityFramework.SqlServerCompact.dll
+C:\Important\_private\LeaveRequestWebApp\CompanyABC.WebApi.Tests\bin\Debug\EntityFramework.SqlServer.dll
+C:\Important\_private\LeaveRequestWebApp\CompanyABC.WebApi.Tests\bin\Debug\AutoMapper.dll
+C:\Important\_private\LeaveRequestWebApp\CompanyABC.WebApi.Tests\bin\Debug\CompanyABC.Data.pdb
+C:\Important\_private\LeaveRequestWebApp\CompanyABC.WebApi.Tests\bin\Debug\EntityFramework.xml
+C:\Important\_private\LeaveRequestWebApp\CompanyABC.WebApi.Tests\bin\Debug\EntityFramework.SqlServerCompact.xml
+C:\Important\_private\LeaveRequestWebApp\CompanyABC.WebApi.Tests\bin\Debug\EntityFramework.SqlServer.xml
+C:\Important\_private\LeaveRequestWebApp\CompanyABC.WebApi.Tests\bin\Debug\AutoMapper.xml
+C:\Important\_private\LeaveRequestWebApp\CompanyABC.WebApi.Tests\bin\Debug\AutoMapper.Net4.dll

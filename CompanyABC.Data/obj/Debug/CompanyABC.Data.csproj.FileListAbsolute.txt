@@ -13,3 +13,6 @@ C:\Important\_private\LeaveRequestWebApp\CompanyABC.Data\obj\Debug\CompanyABC.Da
 C:\Important\_private\LeaveRequestWebApp\CompanyABC.Data\obj\Debug\CompanyABC.Data.pdb
 C:\Important\_private\LeaveRequestWebApp\CompanyABC.Data\obj\Debug\CompanyABC.Data.DbMigrations.LeaveRequest.Initial.resources
 C:\Important\_private\LeaveRequestWebApp\CompanyABC.Data\obj\Debug\CompanyABC.Data.csproj.GenerateResource.Cache
+C:\Important\_private\LeaveRequestWebApp\CompanyABC.Data\obj\Debug\CompanyABC.Data.csprojResolveAssemblyReference.cache
+C:\Important\_private\LeaveRequestWebApp\CompanyABC.Data\bin\Debug\CompanyABC.Core.dll
+C:\Important\_private\LeaveRequestWebApp\CompanyABC.Data\bin\Debug\CompanyABC.Core.pdb

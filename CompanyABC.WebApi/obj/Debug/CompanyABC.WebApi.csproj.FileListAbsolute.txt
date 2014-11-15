@@ -58,3 +58,6 @@ C:\Important\_private\LeaveRequestWebApp\CompanyABC.WebApi\bin\System.Web.Http.W
 C:\Important\_private\LeaveRequestWebApp\CompanyABC.WebApi\obj\Debug\CompanyABC.WebApi.csprojResolveAssemblyReference.cache
 C:\Important\_private\LeaveRequestWebApp\CompanyABC.WebApi\obj\Debug\CompanyABC.WebApi.dll
 C:\Important\_private\LeaveRequestWebApp\CompanyABC.WebApi\obj\Debug\CompanyABC.WebApi.pdb
+C:\Important\_private\LeaveRequestWebApp\CompanyABC.WebApi\bin\AutoMapper.Net4.dll
+C:\Important\_private\LeaveRequestWebApp\CompanyABC.WebApi\bin\AutoMapper.dll
+C:\Important\_private\LeaveRequestWebApp\CompanyABC.WebApi\bin\AutoMapper.xml

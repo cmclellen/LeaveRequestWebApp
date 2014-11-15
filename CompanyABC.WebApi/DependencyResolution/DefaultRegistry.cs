@@ -19,9 +19,17 @@ using System;
 using System.Linq;
 
 using CompanyABC.Core.Config;
+using CompanyABC.Data.Contexts;
+using CompanyABC.Data.Contexts.Contracts;
+using CompanyABC.Data.Repositories.LeaveRequest;
+using CompanyABC.Data.Repositories.LeaveRequest.Contracts;
 
 using StructureMap.Configuration.DSL;
 using StructureMap.Graph;
+using CompanyABC.Core.Mappers;
+using CompanyABC.WebApi.Mappers;
+
+using StructureMap.Web;
 
 namespace CompanyABC.WebApi.DependencyResolution
 {
@@ -37,6 +45,12 @@ namespace CompanyABC.WebApi.DependencyResolution
                     scan.With(new ApiControllerConvention());
                 });
             For<IApplicationSettings>().Use<SystemApplicationSettings>();
+
+            For<IReasonRepository>().Use<ReasonRepository>();
+            For<IMapper>().Use<AutoMapperWrapper>();
+
+            For<ILeaveRequestContext>().HttpContextScoped().Use<LeaveRequestContext>();
+
         }
     }
 }
