@@ -32,9 +32,22 @@ myApp.factory('leaveRequestService', ['$http', '$q', 'eventbusService', function
         return deferred.promise;
     };
 
+    function getUsers() {
+        var deferred = $q.defer();
+        var url = urlBase.concat('GetUsers');
+        $http.get(url)
+            .success(function (response) {
+                deferred.resolve(response);
+            }).error(function (err) {
+                deferred.reject(err);
+            });
+        return deferred.promise;
+    };
+
     return {
         getReasons: getReasons,
-        saveLeaveRequests: saveLeaveRequests
+        saveLeaveRequests: saveLeaveRequests,
+        getUsers: getUsers
     };
 
 }]);

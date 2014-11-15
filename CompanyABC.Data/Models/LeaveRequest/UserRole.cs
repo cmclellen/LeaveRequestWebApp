@@ -1,14 +1,14 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
 using CompanyABC.Data.Constants;
-using System.ComponentModel.DataAnnotations;
 
 namespace CompanyABC.Data.Models.LeaveRequest
 {
-    [Table("l_Reason", Schema = SchemaNames.LeaveRequest)]
-    public class Reason : AuditableEntity
+    [Table("l_UserRole", Schema = SchemaNames.LeaveRequest)]
+    public class UserRole : AuditableEntity
     {
         [Required]
         [StringLength(50)]

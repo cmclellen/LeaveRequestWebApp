@@ -8,16 +8,15 @@ using CompanyABC.Data.Repositories.LeaveRequest.Contracts;
 
 namespace CompanyABC.Data.Repositories.LeaveRequest
 {
-    public class ReasonRepository : BaseRepository<ILeaveRequestContext>, IReasonRepository
+    public class UserRepository : BaseRepository<ILeaveRequestContext>, IUserRepository
     {
-        public ReasonRepository(ILeaveRequestContext dbContext)
-            : base(dbContext)
+        public UserRepository(ILeaveRequestContext dbContext) : base(dbContext)
         {
         }
 
-        public IEnumerable<Reason> GetAll()
+        public IEnumerable<User> GetAll()
         {
-            return DbContext.Reasons;
+            return DbContext.Users;
         }
     }
 }

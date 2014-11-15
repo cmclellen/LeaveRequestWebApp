@@ -24,7 +24,7 @@
             <div class="form-group">
                 <label for="reasonDropdown">Reason</label>
                 <div class="dropdown">
-                    <select id="reasonDropdown" class="form-control" ng-model="data.reasonId" ng-options="reason.id as reason.displayName for reason in lookups.reasons | orderBy: 'name'">
+                    <select id="reasonDropdown" class="form-control" ng-model="data.reasonId" ng-options="reason.id as reason.name for reason in lookups.reasons | orderBy: 'name'">
                         <option value="" disabled selected style='display:none;'>Select reason...</option>
                     </select>
                 </div>

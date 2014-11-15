@@ -84,20 +84,24 @@
     <Compile Include="DbMigrations\CustomSqlServerCEMigrationSqlGenerator.cs" />
     <Compile Include="DbMigrations\CustomSqlServerMigrationSqlGenerator.cs" />
     <Compile Include="DbMigrations\DefaultDbConfiguration.cs" />
-    <Compile Include="DbMigrations\LeaveRequest\201411150205163_Initial.cs" />
-    <Compile Include="DbMigrations\LeaveRequest\201411150205163_Initial.Designer.cs">
-      <DependentUpon>201411150205163_Initial.cs</DependentUpon>
+    <Compile Include="DbMigrations\LeaveRequest\201411152112487_Initial.cs" />
+    <Compile Include="DbMigrations\LeaveRequest\201411152112487_Initial.Designer.cs">
+      <DependentUpon>201411152112487_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="DbMigrations\LeaveRequest\LeaveRequestDbMigrationsConfiguration.cs" />
     <Compile Include="DbMigrations\BaseDbMigrationsConfiguration.cs" />
     <Compile Include="Helpers\DbEntityValidationExceptionHelpers.cs" />
     <Compile Include="Models\AuditableEntity.cs" />
+    <Compile Include="Models\LeaveRequest\User.cs" />
     <Compile Include="Models\LeaveRequest\Reason.cs" />
+    <Compile Include="Models\LeaveRequest\UserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\LeaveRequest\Contracts\IReasonRepository.cs" />
+    <Compile Include="Repositories\LeaveRequest\Contracts\IUserRepository.cs" />
     <Compile Include="Repositories\LeaveRequest\ReasonRepository.cs" />
+    <Compile Include="Repositories\LeaveRequest\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -135,8 +139,8 @@
     <Content Include="readme.txt" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DbMigrations\LeaveRequest\201411150205163_Initial.resx">
-      <DependentUpon>201411150205163_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="DbMigrations\LeaveRequest\201411152112487_Initial.resx">
+      <DependentUpon>201411152112487_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

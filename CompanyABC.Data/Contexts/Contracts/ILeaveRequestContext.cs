@@ -9,5 +9,7 @@ namespace CompanyABC.Data.Contexts.Contracts
     public interface ILeaveRequestContext : IDbContext
     {
         DbSet<Reason> Reasons { get; set; }
+        DbSet<UserRole> UserRoles { get; set; }
+        DbSet<User> Users { get; set; }
     }
 }

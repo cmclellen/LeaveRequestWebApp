@@ -22,10 +22,25 @@ namespace CompanyABC.Data.DbMigrations.LeaveRequest
             {
                 context.Reasons.AddRange(new[]
                 {
-                    new Reason {DisplayName = "Annual"},
-                    new Reason {DisplayName = "Parental"},
-                    new Reason {DisplayName = "Personal"},
-                    new Reason {DisplayName = "Compassionate"},
+                    new Reason {Name = "Annual"},
+                    new Reason {Name = "Parental"},
+                    new Reason {Name = "Personal"},
+                    new Reason {Name = "Compassionate"},
+                });
+
+                UserRole nonManagerUserRole, managerUserRole;
+                context.UserRoles.AddRange(new[]
+                {
+                    nonManagerUserRole = new UserRole {Name = "NonManager"},
+                    managerUserRole = new UserRole {Name = "Manager"},
+                });
+
+                context.Users.AddRange(new[]
+                {
+                    new User {Username = "NonManager1", UserRole = nonManagerUserRole},
+                    new User {Username = "NonManager2", UserRole = nonManagerUserRole},
+                    new User {Username = "Manager1", UserRole = managerUserRole},
+                    new User {Username = "Manager2", UserRole = managerUserRole},
                 });
 
                 context.SaveChanges();

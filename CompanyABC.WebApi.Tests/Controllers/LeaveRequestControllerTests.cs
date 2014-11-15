@@ -23,6 +23,7 @@ namespace CompanyABC.WebApi.Tests.Controllers
         private MockRepository Mocks { get; set; }
         private IMapper Mapper { get; set; }
         private IReasonRepository ReasonRepository { get; set; }
+        private IUserRepository UserRepository { get; set; }
         
         [TestInitialize]
         public void TestInitialize()
@@ -30,6 +31,7 @@ namespace CompanyABC.WebApi.Tests.Controllers
             Mocks = new MockRepository();
             ApplicationSettings = Mocks.Stub<IApplicationSettings>();
             Mapper = AssemblyInitialize.Mapper;
+            UserRepository = Mocks.Stub<IUserRepository>();
             ReasonRepository = Mocks.Stub<IReasonRepository>();
         }
 
@@ -37,13 +39,13 @@ namespace CompanyABC.WebApi.Tests.Controllers
         public void GetReasons_RetrievalOf_AllReasonsToBeReturned()
         {
             // ARRANGE
-            var controller = new LeaveRequestController(ApplicationSettings, Mapper, ReasonRepository);
+            var controller = new LeaveRequestController(ApplicationSettings, Mapper, ReasonRepository, UserRepository);
             ReasonRepository.Expect(mock => mock.GetAll()).Return(new[]
             {
-                new Reason {DisplayName = "Annual"},
-                new Reason {DisplayName = "Personal"},
-                new Reason {DisplayName = "Compassionate"},
-                new Reason {DisplayName = "Parental"}
+                new Reason {Name = "Annual"},
+                new Reason {Name = "Personal"},
+                new Reason {Name = "Compassionate"},
+                new Reason {Name = "Parental"}
             });
 
             // ACT
@@ -54,10 +56,10 @@ namespace CompanyABC.WebApi.Tests.Controllers
             Mocks.VerifyAll();
             var expected = new List<DTOs.Reason>(new[]
             {
-                new DTOs.Reason {DisplayName = "Annual"},
-                new DTOs.Reason {DisplayName = "Personal"},
-                new DTOs.Reason {DisplayName = "Compassionate"},
-                new DTOs.Reason {DisplayName = "Parental"}
+                new DTOs.Reason {Name = "Annual"},
+                new DTOs.Reason {Name = "Personal"},
+                new DTOs.Reason {Name = "Compassionate"},
+                new DTOs.Reason {Name = "Parental"}
             });
             List<DTOs.Reason> actual = getReasonsResponse.Content.Reasons.ToList();
             CollectionAssert.AreEqual(expected, actual, "Expected reasons not returned.");

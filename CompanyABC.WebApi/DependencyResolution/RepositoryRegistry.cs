@@ -27,6 +27,7 @@ namespace CompanyABC.WebApi.DependencyResolution
         private void ConfigureRepositories()
         {
             For<IReasonRepository>().Use<ReasonRepository>();
+            For<IUserRepository>().Use<UserRepository>();
         }
     }
 }

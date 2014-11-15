@@ -4,12 +4,12 @@ using System.Linq;
 using System.Web.Http;
 
 using CompanyABC.Core.Config;
+using CompanyABC.Core.Mappers;
 using CompanyABC.Data.Repositories.LeaveRequest.Contracts;
 using CompanyABC.WebApi.DTOs;
 using CompanyABC.WebApi.DTOs.Responses;
 
 using Utils;
-using CompanyABC.Core.Mappers;
 
 using Reason = CompanyABC.Data.Models.LeaveRequest.Reason;
 
@@ -18,18 +18,24 @@ namespace CompanyABC.WebApi.Controllers
     [AllowAnonymous]
     public class LeaveRequestController : ApiController
     {
-        public LeaveRequestController(IApplicationSettings applicationSettings, IMapper mapper, IReasonRepository reasonRepository)
+        public LeaveRequestController(IApplicationSettings applicationSettings, IMapper mapper,
+            IReasonRepository reasonRepository, IUserRepository userRepository)
         {
-            Guard.NotNull(() => applicationSettings, applicationSettings);
-            Guard.NotNull(() => reasonRepository, reasonRepository);
             Guard.NotNull(() => mapper, mapper);
-            
+            Guard.NotNull(() => applicationSettings, applicationSettings);
+            Guard.NotNull(() => userRepository, userRepository);
+            Guard.NotNull(() => reasonRepository, reasonRepository);
+
             Mapper = mapper;
             ApplicationSettings = applicationSettings;
+
+            // Repositories
+            UserRepository = userRepository;
             ReasonRepository = reasonRepository;
         }
 
-        IMapper Mapper { get; set; }
+        private IUserRepository UserRepository { get; set; }
+        private IMapper Mapper { get; set; }
         private IReasonRepository ReasonRepository { get; set; }
         private IApplicationSettings ApplicationSettings { get; set; }
 
@@ -39,9 +45,16 @@ namespace CompanyABC.WebApi.Controllers
             IEnumerable<Reason> reasons = ReasonRepository.GetAll();
             var response = new GetReasonsResponse
             {
-                Reasons = reasons.Select(reason=>Mapper.Map<Reason, DTOs.Reason>(reason)).ToList()
+                Reasons = reasons.Select(reason => Mapper.Map<Reason, DTOs.Reason>(reason)).ToList()
             };
             return Ok(response);
+        }
+
+        [HttpGet]
+        public IHttpActionResult GetUsers()
+        {
+            var allUsers = UserRepository.GetAll();
+            return Ok(allUsers);
         }
 
         [HttpPost]
@@ -52,7 +65,6 @@ namespace CompanyABC.WebApi.Controllers
             //ReasonRepository.Save();
 
             return Ok();
-
         }
     }
 }
