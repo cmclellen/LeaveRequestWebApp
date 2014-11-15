@@ -19,11 +19,11 @@ namespace CompanyABC.WebClient
         private static void BundleScripts(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery",
-                "//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js")
+                "http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css")
                 .Include("~/scripts/jquery-1.10.2.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap",
-                "//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.js")
+                "http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js")
                 .Include("~/scripts/bootstrap.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/core")

@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations.Model;
-using System.Data.Entity.SqlServer;
 using System.Linq;
 
 namespace CompanyABC.Data.DbMigrations
 {
-    public class CustomSqlServerMigrationSqlGenerator : SqlServerMigrationSqlGenerator
+    public class CustomSqlServerCEMigrationSqlGenerator : System.Data.Entity.SqlServerCompact.SqlCeMigrationSqlGenerator
     {
         private const string CreatedDateColumnName = "CreatedDate";
 
@@ -35,8 +34,9 @@ namespace CompanyABC.Data.DbMigrations
         private static void SetCreatedDateColumn(PropertyModel column)
         {
             if (column.Name == CreatedDateColumnName)
-            {   
-                column.DefaultValueSql = "GETUTCDATE()";
+            {
+                // TODO: Due to limitations of SqlCE, can't use GetUtcDate() - if used across timezones, this would be required, so SqlCE would be unsuitable
+                column.DefaultValueSql = "GETDATE()";
             }
         }
     }

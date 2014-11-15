@@ -15,7 +15,7 @@ namespace CompanyABC.Data.DbMigrations
             AutomaticMigrationsEnabled = false;
             AutomaticMigrationDataLossAllowed = false;
             //SetSqlGenerator("System.Data.SqlClient", new CustomSqlServerMigrationSqlGenerator());
-            SetSqlGenerator("System.Data.SqlServerCe.4.0", new CustomSqlServerMigrationSqlGenerator());
+            SetSqlGenerator("System.Data.SqlServerCe.4.0", new CustomSqlServerCEMigrationSqlGenerator());
         }
     }
 }

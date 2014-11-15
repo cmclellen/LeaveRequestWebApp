@@ -79,10 +79,12 @@
     </Compile>
     <Compile Include="Constants\SchemaNames.cs" />
     <Compile Include="Contexts\LeaveRequestContext.cs" />
+    <Compile Include="DbMigrations\CustomSqlServerCEMigrationSqlGenerator.cs" />
     <Compile Include="DbMigrations\CustomSqlServerMigrationSqlGenerator.cs" />
-    <Compile Include="DbMigrations\LeaveRequest\201411150048205_Initial.cs" />
-    <Compile Include="DbMigrations\LeaveRequest\201411150048205_Initial.Designer.cs">
-      <DependentUpon>201411150048205_Initial.cs</DependentUpon>
+    <Compile Include="DbMigrations\DefaultDbConfiguration.cs" />
+    <Compile Include="DbMigrations\LeaveRequest\201411150205163_Initial.cs" />
+    <Compile Include="DbMigrations\LeaveRequest\201411150205163_Initial.Designer.cs">
+      <DependentUpon>201411150205163_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="DbMigrations\LeaveRequest\LeaveRequestDbMigrationsConfiguration.cs" />
     <Compile Include="DbMigrations\BaseDbMigrationsConfiguration.cs" />
@@ -93,6 +95,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Config\connectionStrings.config">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
@@ -121,8 +126,8 @@
     <Content Include="readme.txt" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DbMigrations\LeaveRequest\201411150048205_Initial.resx">
-      <DependentUpon>201411150048205_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="DbMigrations\LeaveRequest\201411150205163_Initial.resx">
+      <DependentUpon>201411150205163_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
