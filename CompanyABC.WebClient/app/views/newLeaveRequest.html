@@ -19,7 +19,8 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="reasonDropdown">
-                        <li ng-repeat="reason in lookups.reasons | orderBy: 'name'" role="presentation"><a role="menuitem" class="link" ng-bind="reason.displayName">Action</a></li>
+                        <li ng-if="lookups.reasons === null">Loading...</li>
+                        <li ng-if="lookups.reasons !== null" ng-repeat="reason in lookups.reasons | orderBy: 'name'" role="presentation"><a role="menuitem" class="link" ng-bind="reason.displayName">Action</a></li>
                     </ul>
                 </div>
             </div>

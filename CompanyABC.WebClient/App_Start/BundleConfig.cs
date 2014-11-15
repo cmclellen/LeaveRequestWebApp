@@ -9,11 +9,6 @@ namespace CompanyABC.WebClient
         {
             BundleScripts(bundles);
             BundleStyles(bundles);
-#if DEBUG
-            BundleTable.EnableOptimizations = false;
-#else
-            BundleTable.EnableOptimizations = true;
-#endif
         }
 
         private static void BundleScripts(BundleCollection bundles)
