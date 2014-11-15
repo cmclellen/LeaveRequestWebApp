@@ -185,16 +185,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\filters\lookup.js" />
     <Content Include="app\string.js" />
     <Content Include="app\utils.js" />
     <Content Include="app\app.js" />
     <Content Include="app\controllers\newLeaveRequest.js" />
-    <Content Include="app\controllers\landingPage.js" />
+    <Content Include="app\controllers\dashboard.js" />
     <Content Include="app\controllers\layout.js" />
     <Content Include="app\services\eventbusService.js" />
     <Content Include="app\services\leaveRequestService.js" />
-    <Content Include="app\views\landing.html" />
-    <Content Include="app\views\viewHistory.html" />
+    <Content Include="app\views\dashboard.html" />
+    <Content Include="app\views\viewLeaveRequests.html" />
     <Content Include="app\views\newLeaveRequest.html" />
     <Content Include="app\views\layout.html" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -560,6 +561,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\underscore.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

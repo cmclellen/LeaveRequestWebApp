@@ -100,8 +100,10 @@
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\LeaveRequest\Contracts\IReasonRepository.cs" />
     <Compile Include="Repositories\LeaveRequest\Contracts\IUserRepository.cs" />
+    <Compile Include="Repositories\LeaveRequest\Contracts\IUserRoleRepository.cs" />
     <Compile Include="Repositories\LeaveRequest\ReasonRepository.cs" />
     <Compile Include="Repositories\LeaveRequest\UserRepository.cs" />
+    <Compile Include="Repositories\LeaveRequest\UserRoleRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

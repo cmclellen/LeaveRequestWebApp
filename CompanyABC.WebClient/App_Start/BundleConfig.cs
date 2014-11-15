@@ -21,6 +21,10 @@ namespace CompanyABC.WebClient
                 "http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js")
                 .Include("~/scripts/bootstrap.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/underscore",
+                "http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js")
+                .Include("~/scripts/underscore.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/core")
                 .Include("~/app/string.js")
                 .Include("~/app/utils.js"));
@@ -32,6 +36,7 @@ namespace CompanyABC.WebClient
                 .Include("~/scripts/angular-ui/ui-bootstrap-tpls.js")
                 .Include("~/scripts/angular-ui-router.js")
                 .Include("~/app/app.js")
+                .IncludeDirectory("~/app/filters", "*.js")
                 .IncludeDirectory("~/app/services", "*.js")
                 .IncludeDirectory("~/app/controllers", "*.js"));
 

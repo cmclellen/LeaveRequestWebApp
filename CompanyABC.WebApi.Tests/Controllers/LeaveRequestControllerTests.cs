@@ -24,7 +24,8 @@ namespace CompanyABC.WebApi.Tests.Controllers
         private IMapper Mapper { get; set; }
         private IReasonRepository ReasonRepository { get; set; }
         private IUserRepository UserRepository { get; set; }
-        
+        private IUserRoleRepository UserRoleRepository { get; set; }
+
         [TestInitialize]
         public void TestInitialize()
         {
@@ -33,13 +34,15 @@ namespace CompanyABC.WebApi.Tests.Controllers
             Mapper = AssemblyInitialize.Mapper;
             UserRepository = Mocks.Stub<IUserRepository>();
             ReasonRepository = Mocks.Stub<IReasonRepository>();
+            UserRoleRepository = Mocks.Stub<IUserRoleRepository>();
         }
 
         [TestMethod]
         public void GetReasons_RetrievalOf_AllReasonsToBeReturned()
         {
             // ARRANGE
-            var controller = new LeaveRequestController(ApplicationSettings, Mapper, ReasonRepository, UserRepository);
+            var controller = new LeaveRequestController(ApplicationSettings, Mapper, ReasonRepository, UserRepository,
+                UserRoleRepository);
             ReasonRepository.Expect(mock => mock.GetAll()).Return(new[]
             {
                 new Reason {Name = "Annual"},

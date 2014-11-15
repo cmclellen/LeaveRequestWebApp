@@ -3,11 +3,15 @@
 <script type="text/javascript">
 
     var CompanyABC = {
-        constants: {
-            WebApi_Url: '@Model.ApplicationSettings["web_api.url"]'
+        Constants: {
+            WebApi_Url: '@Model.ApplicationSettings["web_api.url"]',
+            UserRoles: {
+                NonManager: 'NonManager',
+                Manager: 'Manager'
+            }
         }
     };
 
-    console.log('constants', CompanyABC.constants);
+    console.log('Constants', CompanyABC.Constants);
 
 </script>

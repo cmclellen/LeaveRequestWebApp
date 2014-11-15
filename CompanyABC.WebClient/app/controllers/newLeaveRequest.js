@@ -1,4 +1,4 @@
-﻿myApp.controller('NewLeaveRequestController', ['$scope', 'leaveRequestService', function ($scope, leaveRequestService) {
+﻿myApp.controller('NewLeaveRequestController', ['$scope', 'leaveRequestService', '$stateParams', function ($scope, leaveRequestService, $stateParams) {
 
     $scope.lookups = {
         reasons: null
@@ -8,11 +8,11 @@
         startDate: null,
         endDate: null,
         reasonId: null,
-        comment: null
+        comment: null,
+        userId: $stateParams.userId
     };
 
     $scope.submitNewLeaveRequest = function () {
-        alert('ddd');
         var leaveRequests = [
             $scope.data
         ];

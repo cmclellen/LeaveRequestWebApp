@@ -12,6 +12,7 @@ using CompanyABC.WebApi.DTOs.Responses;
 using Utils;
 
 using Reason = CompanyABC.Data.Models.LeaveRequest.Reason;
+using CompanyABC.Data.Models.LeaveRequest;
 
 namespace CompanyABC.WebApi.Controllers
 {
@@ -19,23 +20,26 @@ namespace CompanyABC.WebApi.Controllers
     public class LeaveRequestController : ApiController
     {
         public LeaveRequestController(IApplicationSettings applicationSettings, IMapper mapper,
-            IReasonRepository reasonRepository, IUserRepository userRepository)
+            IReasonRepository reasonRepository, IUserRepository userRepository, IUserRoleRepository userRoleRepository)
         {
             Guard.NotNull(() => mapper, mapper);
             Guard.NotNull(() => applicationSettings, applicationSettings);
             Guard.NotNull(() => userRepository, userRepository);
             Guard.NotNull(() => reasonRepository, reasonRepository);
-
+            Guard.NotNull(() => userRoleRepository, userRoleRepository);
+            
             Mapper = mapper;
             ApplicationSettings = applicationSettings;
 
             // Repositories
             UserRepository = userRepository;
             ReasonRepository = reasonRepository;
+            UserRoleRepository = userRoleRepository;
         }
 
         private IUserRepository UserRepository { get; set; }
         private IMapper Mapper { get; set; }
+        private IUserRoleRepository UserRoleRepository { get; set; }
         private IReasonRepository ReasonRepository { get; set; }
         private IApplicationSettings ApplicationSettings { get; set; }
 
@@ -50,6 +54,13 @@ namespace CompanyABC.WebApi.Controllers
             return Ok(response);
         }
 
+        [HttpGet]
+        public IHttpActionResult GetUserRoles()
+        {
+            IEnumerable<UserRole> userRoles = UserRoleRepository.GetAll();
+            return Ok(userRoles);
+        }
+        
         [HttpGet]
         public IHttpActionResult GetUsers()
         {

@@ -20,6 +20,21 @@ myApp.factory('leaveRequestService', ['$http', '$q', 'eventbusService', function
         return deferred.promise;
     };
 
+    function getUserRoles() {
+        var config = {
+            cache: true
+        };
+        var deferred = $q.defer();
+        var url = urlBase.concat('GetUserRoles');
+        $http.get(url, config)
+            .success(function (response) {
+                deferred.resolve(response);
+            }).error(function (err, status) {
+                deferred.reject(err);
+            });
+        return deferred.promise;
+    };
+
     function saveLeaveRequests(args) {
         var deferred = $q.defer();
         var url = urlBase.concat('SaveLeaveRequests');
@@ -45,7 +60,12 @@ myApp.factory('leaveRequestService', ['$http', '$q', 'eventbusService', function
     };
 
     return {
+
+        // Lookups
         getReasons: getReasons,
+        getUserRoles: getUserRoles,
+
+        // Other
         saveLeaveRequests: saveLeaveRequests,
         getUsers: getUsers
     };

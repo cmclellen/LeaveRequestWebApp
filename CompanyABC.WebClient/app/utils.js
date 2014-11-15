@@ -5,7 +5,7 @@ angular.extend(CompanyABC, (function () {
     var WebApi = (function () {
 
         function mapPath(path) {
-            var path = '{0}/{1}'.format(CompanyABC.constants.WebApi_Url, path);
+            var path = '{0}/{1}'.format(CompanyABC.Constants.WebApi_Url, path);
             return path;
         }
 

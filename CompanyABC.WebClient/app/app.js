@@ -22,26 +22,26 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', (function
 
         configureDefaultsForHttpProvider($httpProvider);
 
-        $urlRouterProvider.otherwise("/landing");
+        $urlRouterProvider.otherwise("/dashboard");
 
         $stateProvider
             .state('layout', {
                 abstract: true,
                 templateUrl: "/app/views/layout.html",
                 controller: 'LayoutController'
-            }).state('landing', {
+            }).state('dashboard', {
                 parent: 'layout',
-                url: "/landing",
-                templateUrl: "/app/views/landing.html"
+                url: "/dashboard",
+                templateUrl: "/app/views/dashboard.html"
             }).state('newLeaveRequest', {
                 parent: 'layout',
-                url: "/newLeaveRequest",
+                url: "/newLeaveRequest?userId",
                 templateUrl: "/app/views/newLeaveRequest.html",
                 controller: 'NewLeaveRequestController'
-            }).state('viewHistory', {
+            }).state('viewLeaveRequests', {
                 parent: 'layout',
-                url: "/viewHistory",
-                templateUrl: "/app/views/viewHistory.html"
+                url: "/viewLeaveRequests",
+                templateUrl: "/app/views/viewLeaveRequests.html"
             });
     }
 })()]);

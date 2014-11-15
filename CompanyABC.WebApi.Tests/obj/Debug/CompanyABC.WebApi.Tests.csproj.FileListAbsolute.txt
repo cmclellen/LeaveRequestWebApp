@@ -42,4 +42,3 @@ C:\Important\_private\LeaveRequestWebApp\CompanyABC.WebApi.Tests\bin\Debug\Entit
 C:\Important\_private\LeaveRequestWebApp\CompanyABC.WebApi.Tests\bin\Debug\EntityFramework.SqlServerCompact.xml
 C:\Important\_private\LeaveRequestWebApp\CompanyABC.WebApi.Tests\bin\Debug\EntityFramework.SqlServer.xml
 C:\Important\_private\LeaveRequestWebApp\CompanyABC.WebApi.Tests\bin\Debug\AutoMapper.xml
-C:\Important\_private\LeaveRequestWebApp\CompanyABC.WebApi.Tests\bin\Debug\AutoMapper.Net4.dll

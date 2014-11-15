@@ -16,23 +16,33 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    
-                    <li class="dropdown">
+                    <li class="dropdown" ng-if="data.selectedUser.userRole.name === $window.CompanyABC.Constants.UserRoles.NonManager">
                         <a class="dropdown-toggle link" data-toggle="dropdown" role="button" aria-expanded="false">Actions <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a ui-sref="newLeaveRequest">New Request</a></li>
-                            <li><a ui-sref="viewHistory">View History</a></li>
+                            <li><a ui-sref="newLeaveRequest({userId: data.selectedUser.id})">New Request</a></li>
+                            <li><a ui-sref="viewLeaveRequests">View History</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="dropdown" ng-if="data.selectedUser.userRole.name === $window.CompanyABC.Constants.UserRoles.Manager">
+                        <a class="dropdown-toggle link" data-toggle="dropdown" role="button" aria-expanded="false">Actions <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a ui-sref="viewLeaveRequests">View All Leave Requests</a></li>
                         </ul>
                     </li>
                     
                 </ul>
                 
-                
                 <ul class="nav navbar-nav navbar-right">
                     <li>
+                        <a href="#" ng-if="data.selectedUser">
+                            User role: <strong ng-bind="data.selectedUser.userRole.name"></strong>
+                        </a>
+                    </li>
+                    <li>
                         <a href="#">
-                                <label for="userSelect">Logged in as</label>
-                            <select id="userSelect" ng-model="data.userId" ng-options="user.id as user.username for user in data.users | orderBy: 'username'">
+                            <label for="userSelect">Logged in as</label>
+                            <select id="userSelect" ng-model="data.selectedUser" ng-options="user as user.username for user in data.users | orderBy: 'username'">
                                 <option value="" disabled selected style='display: none;'>Select user...</option>
                             </select>
                         </a>
