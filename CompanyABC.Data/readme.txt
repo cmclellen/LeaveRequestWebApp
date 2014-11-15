@@ -1,0 +1,2 @@
+﻿Add-Migration -Force Initial -ConfigurationTypeName LeaveRequestDbMigrationsConfiguration
+update-database -ConfigurationTypeName LeaveRequestDbMigrationsConfiguration
