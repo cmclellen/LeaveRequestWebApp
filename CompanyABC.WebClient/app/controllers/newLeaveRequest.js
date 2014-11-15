@@ -8,7 +8,7 @@
         startDate: null,
         endDate: null,
         reasonId: null,
-        comment: null,
+        comments: null,
         userId: $stateParams.userId
     };
 

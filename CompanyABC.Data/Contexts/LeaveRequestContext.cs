@@ -19,6 +19,6 @@ namespace CompanyABC.Data.Contexts
         public DbSet<Reason> Reasons { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<User> Users { get; set; }
-        
+        public DbSet<LeaveRequest> LeaveRequests { get; set; }
     }
 }

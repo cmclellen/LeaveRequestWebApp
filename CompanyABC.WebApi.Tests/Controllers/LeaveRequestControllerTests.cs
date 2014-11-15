@@ -25,6 +25,7 @@ namespace CompanyABC.WebApi.Tests.Controllers
         private IReasonRepository ReasonRepository { get; set; }
         private IUserRepository UserRepository { get; set; }
         private IUserRoleRepository UserRoleRepository { get; set; }
+        private ILeaveRequestRepository LeaveRequestRepository { get; set; }
 
         [TestInitialize]
         public void TestInitialize()
@@ -35,6 +36,7 @@ namespace CompanyABC.WebApi.Tests.Controllers
             UserRepository = Mocks.Stub<IUserRepository>();
             ReasonRepository = Mocks.Stub<IReasonRepository>();
             UserRoleRepository = Mocks.Stub<IUserRoleRepository>();
+            LeaveRequestRepository = Mocks.Stub<ILeaveRequestRepository>();
         }
 
         [TestMethod]
@@ -42,7 +44,7 @@ namespace CompanyABC.WebApi.Tests.Controllers
         {
             // ARRANGE
             var controller = new LeaveRequestController(ApplicationSettings, Mapper, ReasonRepository, UserRepository,
-                UserRoleRepository);
+                UserRoleRepository, LeaveRequestRepository);
             ReasonRepository.Expect(mock => mock.GetAll()).Return(new[]
             {
                 new Reason {Name = "Annual"},
