@@ -4,12 +4,14 @@ using System.Linq;
 using System.Web.Http;
 
 using CompanyABC.Core.Config;
-using CompanyABC.Data.Models.LeaveRequest;
 using CompanyABC.Data.Repositories.LeaveRequest.Contracts;
+using CompanyABC.WebApi.DTOs;
 using CompanyABC.WebApi.DTOs.Responses;
 
 using Utils;
 using CompanyABC.Core.Mappers;
+
+using Reason = CompanyABC.Data.Models.LeaveRequest.Reason;
 
 namespace CompanyABC.WebApi.Controllers
 {
@@ -40,6 +42,17 @@ namespace CompanyABC.WebApi.Controllers
                 Reasons = reasons.Select(reason=>Mapper.Map<Reason, DTOs.Reason>(reason)).ToList()
             };
             return Ok(response);
+        }
+
+        [HttpPost]
+        public IHttpActionResult SaveLeaveRequests(IList<LeaveRequest> leaveRequests)
+        {
+            Guard.NotNull(() => leaveRequests, leaveRequests);
+
+            //ReasonRepository.Save();
+
+            return Ok();
+
         }
     }
 }

@@ -20,8 +20,21 @@ myApp.factory('leaveRequestService', ['$http', '$q', 'eventbusService', function
         return deferred.promise;
     };
 
+    function saveLeaveRequests(args) {
+        var deferred = $q.defer();
+        var url = urlBase.concat('SaveLeaveRequests');
+        $http.post(url, args)
+            .success(function (response) {
+                deferred.resolve(response);
+            }).error(function (err) {
+                deferred.reject(err);
+            });
+        return deferred.promise;
+    };
+
     return {
-        getReasons: getReasons
+        getReasons: getReasons,
+        saveLeaveRequests: saveLeaveRequests
     };
 
 }]);

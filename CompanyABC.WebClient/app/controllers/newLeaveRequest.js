@@ -5,14 +5,20 @@
     };
 
     $scope.data = {
-        applicationName: 'Awesome Leave Request App',
         startDate: null,
         endDate: null,
-        reasonId: null
+        reasonId: null,
+        comment: null
     };
 
-    $scope.submitNewLeaveRequest = function() {
-        toastr.success('submit it to their manager for approval');
+    $scope.submitNewLeaveRequest = function () {
+        alert('ddd');
+        var leaveRequests = [
+            $scope.data
+        ];
+        leaveRequestService.saveLeaveRequests(leaveRequests).then(function () {
+            toastr.success('submit it to their manager for approval');
+        });
     };
 
     $scope.open = function ($event, instanceName) {
