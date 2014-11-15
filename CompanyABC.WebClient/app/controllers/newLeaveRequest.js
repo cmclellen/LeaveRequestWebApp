@@ -4,12 +4,21 @@
         reasons: null
     };
 
-    $scope.models = {
-        applicationName: 'Awesome Leave Request App'
+    $scope.data = {
+        applicationName: 'Awesome Leave Request App',
+        startDate: null,
+        endDate: null
     };
 
     $scope.submitNewLeaveRequest = function() {
         toastr.success('submit it to their manager for approval');
+    };
+
+    $scope.open = function ($event, instanceName) {
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        $scope[instanceName] = true;
     };
 
     function initialize() {

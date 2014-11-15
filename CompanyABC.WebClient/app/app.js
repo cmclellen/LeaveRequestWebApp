@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-var myApp = angular.module('LeaveRequestWebApp', ['ui.router']);
+var myApp = angular.module('LeaveRequestWebApp', ['ui.router', 'ui.bootstrap']);
 
 myApp.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', (function () {
 

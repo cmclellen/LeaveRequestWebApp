@@ -1,6 +1,6 @@
 ﻿myApp.controller('LandingPageController', ['$scope', function ($scope) {
 
-    $scope.models = {
+    $scope.data = {
         applicationName: 'Awesome Leave Request App'
     };
 

@@ -25,7 +25,11 @@ namespace CompanyABC.WebClient
                 .Include("~/app/string.js")
                 .Include("~/app/utils.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/angular", "http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.21/angular.min.js")
+                .Include("~/scripts/angular.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/angular-core")
+                .Include("~/scripts/angular-ui/ui-bootstrap-tpls.js")
                 .Include("~/scripts/angular-ui-router.js")
                 .Include("~/app/app.js")
                 .IncludeDirectory("~/app/services", "*.js")

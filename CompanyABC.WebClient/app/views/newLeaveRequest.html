@@ -1,15 +1,29 @@
 ﻿<div class="panel panel-default" ng-submit="submitNewLeaveRequest()">
     <div class="panel-heading">New Leave Request</div>
     <div class="panel-body">
-
+        <pre>{{data|json}}</pre>
         <form role="form">
             <div class="form-group">
                 <label for="startDate">Start date</label>
-                <input type="email" class="form-control" id="startDate" placeholder="Start date">
+                
+                <p class="input-group">
+                    <input id="startDate" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="data.startDate" is-open="isStartDateOpened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="open($event, 'isStartDateOpened')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>
+
+                <!--<datepicker id="startDate" ng-model="data.startDate" min-date="minDate" show-weeks="true" class="well well-sm" placeholder="Start date"></datepicker>-->
+                <!--<input type="email" class="form-control" id="startDate" placeholder="Start date">-->
             </div>
             <div class="form-group">
                 <label for="endDate">End date</label>
-                <input type="email" class="form-control" id="endDate" placeholder="End date">
+                <p class="input-group">
+                    <input id="endDate" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="data.endDate" is-open="isEndDateOpened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="open($event, 'isEndDateOpened')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>
             </div>
             <div class="form-group">
                 <label for="reasonDropdown">Reason</label>
