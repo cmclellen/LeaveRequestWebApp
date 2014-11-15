@@ -7,7 +7,8 @@
     $scope.data = {
         applicationName: 'Awesome Leave Request App',
         startDate: null,
-        endDate: null
+        endDate: null,
+        reasonId: null
     };
 
     $scope.submitNewLeaveRequest = function() {

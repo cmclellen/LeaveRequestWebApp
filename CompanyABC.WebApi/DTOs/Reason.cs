@@ -5,6 +5,7 @@ namespace CompanyABC.WebApi.DTOs
 {
     public class Reason : IEquatable<Reason>
     {
+        public int Id { get; set; }
         public string DisplayName { get; set; }
 
         public bool Equals(Reason other)
@@ -12,7 +13,9 @@ namespace CompanyABC.WebApi.DTOs
             bool isEqual = false;
             if (other != null)
             {
-                isEqual = string.Equals(other.DisplayName, DisplayName);
+                isEqual =
+                    other.Id == Id &&
+                    string.Equals(other.DisplayName, DisplayName);
             }
             return isEqual;
         }
@@ -24,7 +27,7 @@ namespace CompanyABC.WebApi.DTOs
 
         public override int GetHashCode()
         {
-            int hashCode = 0;
+            int hashCode = Id.GetHashCode();
             if (DisplayName != null)
             {
                 hashCode = DisplayName.GetHashCode();
