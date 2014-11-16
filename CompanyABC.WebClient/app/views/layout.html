@@ -20,7 +20,7 @@
                         <a class="dropdown-toggle link" data-toggle="dropdown" hover-dropdown-toggle role="button" aria-expanded="false">Actions <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a ui-sref="newLeaveRequest({userId: data.selectedUser.id})">New Request</a></li>
-                            <li><a ui-sref="viewLeaveRequests">View History</a></li>
+                            <li><a ui-sref="viewLeaveRequests({userId: data.selectedUser.id})">View History</a></li>
                         </ul>
                     </li>
                     

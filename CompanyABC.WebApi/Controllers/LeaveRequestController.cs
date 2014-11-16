@@ -9,6 +9,7 @@ using CompanyABC.Core.Email;
 using CompanyABC.Core.Mappers;
 using CompanyABC.Data.Models.LeaveRequest;
 using CompanyABC.Data.Repositories.LeaveRequest.Contracts;
+using CompanyABC.WebApi.DTOs.Requests;
 using CompanyABC.WebApi.DTOs.Responses;
 
 using Utils;
@@ -72,6 +73,18 @@ namespace CompanyABC.WebApi.Controllers
         {
             IEnumerable<User> allUsers = UserRepository.GetAll();
             return Ok(allUsers);
+        }
+
+        [HttpPost]
+        public IHttpActionResult GetLeaveRequests(GetLeaveRequestsRequest request)
+        {
+            Guard.NotNull(() => request, request);
+            var result = LeaveRequestRepository.GetAll();
+            if (request.UserId.HasValue)
+            {
+                result = result.Where(entity => entity.UserId == request.UserId.Value);
+            }
+            return Ok(result.ToList());
         }
 
         [HttpPost]

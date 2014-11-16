@@ -185,6 +185,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\controllers\viewLeaveRequests.js" />
     <Content Include="app\directives\hoverDropdownToggle.js" />
     <Content Include="app\filters\lookup.js" />
     <Content Include="app\string.js" />

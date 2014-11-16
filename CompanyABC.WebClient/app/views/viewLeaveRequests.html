@@ -1,1 +1,23 @@
-﻿view history
+﻿<div class="panel panel-default" ng-submit="submitNewLeaveRequest()">
+    <div class="panel-heading">Leave Requests</div>
+    <div class="panel-body">
+        <table class="table table-bordered">
+            <thead>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Reason</th>
+            <th>Comments</th>
+            <th>Created Date</th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="leaveRequest in data.leaveRequests | orderBy: 'createdDate': true">
+                    <td ng-bind="leaveRequest.startDate"></td>
+                    <td ng-bind="leaveRequest.endDate"></td>
+                    <td ng-bind="leaveRequest.reason.name"></td>
+                    <td ng-bind="leaveRequest.comments"></td>
+                    <td ng-bind="leaveRequest.createdDate"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

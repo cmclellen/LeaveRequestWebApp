@@ -59,6 +59,18 @@ myApp.factory('leaveRequestService', ['$http', '$q', 'eventbusService', function
         return deferred.promise;
     };
 
+    function getLeaveRequests(args) {
+        var deferred = $q.defer();
+        var url = urlBase.concat('GetLeaveRequests');
+        $http.post(url, args)
+            .success(function (response) {
+                deferred.resolve(response);
+            }).error(function (err) {
+                deferred.reject(err);
+            });
+        return deferred.promise;
+    };
+    
     return {
 
         // Lookups
@@ -66,6 +78,7 @@ myApp.factory('leaveRequestService', ['$http', '$q', 'eventbusService', function
         getUserRoles: getUserRoles,
 
         // Other
+        getLeaveRequests: getLeaveRequests,
         saveLeaveRequests: saveLeaveRequests,
         getUsers: getUsers
     };

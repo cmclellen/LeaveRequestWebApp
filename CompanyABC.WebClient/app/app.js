@@ -40,8 +40,9 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', (function
                 controller: 'NewLeaveRequestController'
             }).state('viewLeaveRequests', {
                 parent: 'layout',
-                url: "/viewLeaveRequests",
-                templateUrl: "/app/views/viewLeaveRequests.html"
+                url: "/viewLeaveRequests?userId&managerUserId",
+                templateUrl: "/app/views/viewLeaveRequests.html",
+                controller: 'ViewLeaveRequestsController'
             });
     }
 })()]);

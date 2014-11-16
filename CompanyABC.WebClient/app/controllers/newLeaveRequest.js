@@ -30,8 +30,7 @@
 
     function initialize() {
         var lookups = $scope.lookups;
-
-        console.log('calling service...');
+        
         leaveRequestService.getReasons().then(function (response) {
             lookups.reasons = response.reasons;
         }, function (err) {
