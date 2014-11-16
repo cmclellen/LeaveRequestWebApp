@@ -36,6 +36,7 @@ namespace CompanyABC.WebClient
                 .Include("~/scripts/angular-ui/ui-bootstrap-tpls.js")
                 .Include("~/scripts/angular-ui-router.js")
                 .Include("~/app/app.js")
+                .IncludeDirectory("~/app/directives", "*.js")
                 .IncludeDirectory("~/app/filters", "*.js")
                 .IncludeDirectory("~/app/services", "*.js")
                 .IncludeDirectory("~/app/controllers", "*.js"));

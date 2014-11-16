@@ -35,12 +35,13 @@ namespace CompanyABC.Data.DbMigrations.LeaveRequest
                     managerUserRole = new UserRole {Name = "Manager"},
                 });
 
+                User manager1, manager2;
                 context.Users.AddRange(new[]
                 {
-                    new User {Username = "NonManager1", UserRole = nonManagerUserRole},
-                    new User {Username = "NonManager2", UserRole = nonManagerUserRole},
-                    new User {Username = "Manager1", UserRole = managerUserRole},
-                    new User {Username = "Manager2", UserRole = managerUserRole},
+                    manager1 = new User {Username = "Manager1", UserRole = managerUserRole, EmailAddress = "Manager1@CompanyABC.com"},
+                    manager2 = new User {Username = "Manager2", UserRole = managerUserRole, EmailAddress = "Manager2@CompanyABC.com"},
+                    new User {Username = "NonManager1", UserRole = nonManagerUserRole, ManagerUser = manager1, EmailAddress = "NonManager1@CompanyABC.com"},
+                    new User {Username = "NonManager2", UserRole = nonManagerUserRole, ManagerUser = manager2, EmailAddress = "NonManager2@CompanyABC.com"},
                 });
 
                 context.SaveChanges();

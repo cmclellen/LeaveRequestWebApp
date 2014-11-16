@@ -98,9 +98,11 @@ namespace CompanyABC.WebApi.Controllers
                 var message = new MailMessage
                 {
                     Subject = string.Format("Leave Request Notification from {0}", foundUser.Username),
+                    IsBodyHtml = true,
                     Body = string.Format("A leave request for {0} awaits your approval.", foundUser.Username)
                 };
-                message.To.Add(new MailAddress("cmclellen@gmail.com"));
+                var managerUser = foundUser.ManagerUser;
+                message.To.Add(new MailAddress(managerUser.EmailAddress));
                 yield return message;
             }
         }

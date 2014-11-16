@@ -43,12 +43,16 @@ namespace CompanyABC.Data.DbMigrations.LeaveRequest
                         Id = c.Int(nullable: false, identity: true),
                         Username = c.String(nullable: false, maxLength: 50),
                         UserRoleId = c.Int(nullable: false),
+                        ManagerUserId = c.Int(),
+                        EmailAddress = c.String(nullable: false, maxLength: 320),
                         CreatedDate = c.DateTime(),
                     })
                 .PrimaryKey(t => t.Id)
+                .ForeignKey("LeaveRequest.m_User", t => t.ManagerUserId)
                 .ForeignKey("LeaveRequest.l_UserRole", t => t.UserRoleId, cascadeDelete: true)
                 .Index(t => t.Username, unique: true, name: "UC_Username")
-                .Index(t => t.UserRoleId);
+                .Index(t => t.UserRoleId)
+                .Index(t => t.ManagerUserId);
             
             CreateTable(
                 "LeaveRequest.l_UserRole",
@@ -67,8 +71,10 @@ namespace CompanyABC.Data.DbMigrations.LeaveRequest
         {
             DropForeignKey("LeaveRequest.m_LeaveRequest", "UserId", "LeaveRequest.m_User");
             DropForeignKey("LeaveRequest.m_User", "UserRoleId", "LeaveRequest.l_UserRole");
+            DropForeignKey("LeaveRequest.m_User", "ManagerUserId", "LeaveRequest.m_User");
             DropForeignKey("LeaveRequest.m_LeaveRequest", "ReasonId", "LeaveRequest.l_Reason");
             DropIndex("LeaveRequest.l_UserRole", "UC_Name");
+            DropIndex("LeaveRequest.m_User", new[] { "ManagerUserId" });
             DropIndex("LeaveRequest.m_User", new[] { "UserRoleId" });
             DropIndex("LeaveRequest.m_User", "UC_Username");
             DropIndex("LeaveRequest.l_Reason", "UC_Name");

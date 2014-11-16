@@ -13,7 +13,7 @@ namespace CompanyABC.Data.DbMigrations.LeaveRequest
         
         string IMigrationMetadata.Id
         {
-            get { return "201411152337188_Initial"; }
+            get { return "201411160041031_Initial"; }
         }
         
         string IMigrationMetadata.Source

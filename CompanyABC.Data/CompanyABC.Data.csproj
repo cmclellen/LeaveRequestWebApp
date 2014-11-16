@@ -84,9 +84,9 @@
     <Compile Include="DbMigrations\CustomSqlServerCEMigrationSqlGenerator.cs" />
     <Compile Include="DbMigrations\CustomSqlServerMigrationSqlGenerator.cs" />
     <Compile Include="DbMigrations\DefaultDbConfiguration.cs" />
-    <Compile Include="DbMigrations\LeaveRequest\201411152337188_Initial.cs" />
-    <Compile Include="DbMigrations\LeaveRequest\201411152337188_Initial.Designer.cs">
-      <DependentUpon>201411152337188_Initial.cs</DependentUpon>
+    <Compile Include="DbMigrations\LeaveRequest\201411160041031_Initial.cs" />
+    <Compile Include="DbMigrations\LeaveRequest\201411160041031_Initial.Designer.cs">
+      <DependentUpon>201411160041031_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="DbMigrations\LeaveRequest\LeaveRequestDbMigrationsConfiguration.cs" />
     <Compile Include="DbMigrations\BaseDbMigrationsConfiguration.cs" />
@@ -145,8 +145,8 @@
     <Content Include="readme.txt" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DbMigrations\LeaveRequest\201411152337188_Initial.resx">
-      <DependentUpon>201411152337188_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="DbMigrations\LeaveRequest\201411160041031_Initial.resx">
+      <DependentUpon>201411160041031_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

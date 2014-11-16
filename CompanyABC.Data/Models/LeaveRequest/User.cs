@@ -17,6 +17,15 @@ namespace CompanyABC.Data.Models.LeaveRequest
         public int UserRoleId { get; set; }
 
         [ForeignKey("UserRoleId")]
-        public UserRole UserRole { get; set; }
+        public virtual UserRole UserRole { get; set; }
+
+        public int? ManagerUserId { get; set; }
+
+        [ForeignKey("ManagerUserId")]
+        public virtual User ManagerUser { get; set; }
+
+        [Required]
+        [StringLength(320)]
+        public string EmailAddress { get; set; }
     }
 }

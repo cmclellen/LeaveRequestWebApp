@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 using CompanyABC.Data.Contexts.Contracts;
@@ -11,6 +13,12 @@ namespace CompanyABC.Data.Repositories.LeaveRequest
     {
         public UserRepository(ILeaveRequestContext dbContext) : base(dbContext)
         {
+        }
+
+        public override IEnumerable<User> GetByIds(IEnumerable<int> entityIds)
+        {
+            return Set.Where(entity => entityIds.Contains(entity.Id))
+                .Include(s=>s.ManagerUser);
         }
     }
 }

@@ -41,7 +41,7 @@ namespace CompanyABC.Data.Repositories
             return Set;
         }
 
-        public IEnumerable<TEntity> GetByIds(IEnumerable<int> entityIds)
+        public virtual IEnumerable<TEntity> GetByIds(IEnumerable<int> entityIds)
         {
             return Set.Where(entity => entityIds.Contains(entity.Id));
         }
