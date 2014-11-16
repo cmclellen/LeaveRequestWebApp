@@ -1,4 +1,4 @@
-﻿myApp.controller('NewLeaveRequestController', ['$scope', 'leaveRequestService', '$stateParams', function ($scope, leaveRequestService, $stateParams) {
+﻿myApp.controller('NewLeaveRequestController', ['$scope', 'leaveRequestService', '$state', '$stateParams', function ($scope, leaveRequestService, $state, $stateParams) {
 
     $scope.lookups = {
         reasons: null
@@ -17,7 +17,8 @@
             $scope.data
         ];
         leaveRequestService.saveLeaveRequests(leaveRequests).then(function () {
-            toastr.success('submit it to their manager for approval');
+            $state.go('dashboard');
+            toastr.success('Leave request saved');
         });
     };
 

@@ -20,6 +20,13 @@ namespace CompanyABC.Data.DbMigrations.LeaveRequest
 
             try
             {
+                context.LeaveRequestStatuses.AddRange(new[]
+                {
+                    new LeaveRequestStatus {Name = "Approved"},
+                    new LeaveRequestStatus {Name = "Rejected"},
+                });
+                context.SaveChanges();
+                
                 context.Reasons.AddRange(new[]
                 {
                     new Reason {Name = "Annual"},
@@ -27,6 +34,7 @@ namespace CompanyABC.Data.DbMigrations.LeaveRequest
                     new Reason {Name = "Personal"},
                     new Reason {Name = "Compassionate"},
                 });
+                context.SaveChanges();
 
                 UserRole nonManagerUserRole, managerUserRole;
                 context.UserRoles.AddRange(new[]
@@ -34,16 +42,15 @@ namespace CompanyABC.Data.DbMigrations.LeaveRequest
                     nonManagerUserRole = new UserRole {Name = "NonManager"},
                     managerUserRole = new UserRole {Name = "Manager"},
                 });
+                context.SaveChanges();
 
-                User manager1, manager2;
+                User manager1;
                 context.Users.AddRange(new[]
                 {
                     manager1 = new User {Username = "Manager1", UserRole = managerUserRole, EmailAddress = "Manager1@CompanyABC.com"},
-                    manager2 = new User {Username = "Manager2", UserRole = managerUserRole, EmailAddress = "Manager2@CompanyABC.com"},
                     new User {Username = "NonManager1", UserRole = nonManagerUserRole, ManagerUser = manager1, EmailAddress = "NonManager1@CompanyABC.com"},
-                    new User {Username = "NonManager2", UserRole = nonManagerUserRole, ManagerUser = manager2, EmailAddress = "NonManager2@CompanyABC.com"},
+                    new User {Username = "NonManager2", UserRole = nonManagerUserRole, ManagerUser = manager1, EmailAddress = "NonManager2@CompanyABC.com"},
                 });
-
                 context.SaveChanges();
             }
             catch (DbEntityValidationException ex)

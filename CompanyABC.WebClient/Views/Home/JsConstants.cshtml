@@ -5,9 +5,13 @@
     var CompanyABC = {
         Constants: {
             WebApi_Url: '@Model.ApplicationSettings["web_api.url"]',
-            UserRoles: {
-                NonManager: 'NonManager',
-                Manager: 'Manager'
+            UserRole: {
+                NonManager: 1,
+                Manager: 2
+            },
+            LeaveRequestStatus: {
+                Approved: 1,
+                Rejected: 2
             }
         }
     };

@@ -36,19 +36,25 @@ namespace CompanyABC.Data.Repositories
             get { return DbContext.Set<TEntity>(); }
         } 
 
-        public IEnumerable<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> GetAll()
         {
             return Set;
         }
 
         public virtual IEnumerable<TEntity> GetByIds(IEnumerable<int> entityIds)
         {
-            return Set.Where(entity => entityIds.Contains(entity.Id));
+            return GetAll().Where(entity => entityIds.Contains(entity.Id));
         }
 
         public IEnumerable<TEntity> Save(IEnumerable<TEntity> entities)
         {
-            entities = Set.AddRange(entities);
+            foreach (var entity in entities)
+            {
+             
+                bool isNew = entity.Id == 0;
+                var entry = DbContext.Entry(entity);
+                entry.State = isNew ? EntityState.Added : EntityState.Modified;
+            }
             DbContext.SaveChanges();
             return entities;
         }

@@ -3,19 +3,38 @@
     <div class="panel-body">
         <table class="table table-bordered">
             <thead>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Reason</th>
-            <th>Comments</th>
-            <th>Created Date</th>
+                <th>Username</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Reason</th>
+                <th>Comments</th>
+                <th>Created Date</th>
+                <th>Status</th>
             </thead>
             <tbody>
-                <tr ng-repeat="leaveRequest in data.leaveRequests | orderBy: 'createdDate': true">
+                <tr ng-if="!data.leaveRequests">
+                    <td colspan="6">Loading...</td>
+                </tr>
+                <tr ng-if="data.leaveRequests && data.leaveRequests.length === 0">
+                    <td colspan="6">No record(s) found</td>
+                </tr>
+                <tr ng-if="data.leaveRequests && data.leaveRequests.length > 0" ng-repeat="leaveRequest in data.leaveRequests | orderBy: 'createdDate': true">
+                    <td ng-bind="leaveRequest.user.username"></td>
                     <td ng-bind="leaveRequest.startDate"></td>
                     <td ng-bind="leaveRequest.endDate"></td>
                     <td ng-bind="leaveRequest.reason.name"></td>
                     <td ng-bind="leaveRequest.comments"></td>
                     <td ng-bind="leaveRequest.createdDate"></td>
+                    <td class="text-center">
+                        <div ng-if="leaveRequest.leaveRequestStatus === null && data.userRoleId === $window.CompanyABC.Constants.UserRole.Manager">
+                            <i class="glyphicon glyphicon-ok success" tooltip="Approve" ng-click="approveLeaveRequest(leaveRequest, true)"></i>
+                            <i class="glyphicon glyphicon-remove danger" tooltip="Reject" ng-click="approveLeaveRequest(leaveRequest, false)"></i>
+                        </div>
+                        <div ng-if="leaveRequest.leaveRequestStatus !== null">
+                            <i class="glyphicon glyphicon-ok success" tooltip="Approve" ng-show="leaveRequest.leaveRequestStatus.id === $window.CompanyABC.Constants.LeaveRequestStatus.Approved"></i>
+                            <i class="glyphicon glyphicon-remove danger" tooltip="Reject" ng-show="leaveRequest.leaveRequestStatus.id === $window.CompanyABC.Constants.LeaveRequestStatus.Rejected"></i>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
         </table>

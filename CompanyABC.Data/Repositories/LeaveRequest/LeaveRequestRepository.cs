@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 using CompanyABC.Data.Contexts.Contracts;
@@ -12,7 +14,13 @@ namespace CompanyABC.Data.Repositories.LeaveRequest
         public LeaveRequestRepository(ILeaveRequestContext dbContext)
             : base(dbContext)
         {
-            
+        }
+
+        public override IEnumerable<Models.LeaveRequest.LeaveRequest> GetAll()
+        {
+            return Set
+                .Include(entity => entity.User)
+                .Include(entity => entity.LeaveRequestStatus);
         }
     }
 }

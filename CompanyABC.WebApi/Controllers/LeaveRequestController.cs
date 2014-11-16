@@ -76,6 +76,16 @@ namespace CompanyABC.WebApi.Controllers
         }
 
         [HttpPost]
+        public IHttpActionResult ApproveLeaveRequest(ApproveLeaveRequestRequest request)
+        {
+            Guard.NotNull(() => request, request);
+            var leaveRequest = LeaveRequestRepository.GetByIds(new[] {request.LeaveRequestId}).Single();
+            leaveRequest.LeaveRequestStatusId = request.LeaveRequestStatusId;
+            LeaveRequestRepository.Save(new[] {leaveRequest});
+            return Ok();
+        }
+
+        [HttpPost]
         public IHttpActionResult GetLeaveRequests(GetLeaveRequestsRequest request)
         {
             Guard.NotNull(() => request, request);
@@ -83,6 +93,10 @@ namespace CompanyABC.WebApi.Controllers
             if (request.UserId.HasValue)
             {
                 result = result.Where(entity => entity.UserId == request.UserId.Value);
+            }
+            if (request.ManagerUserId.HasValue)
+            {
+                result = result.Where(entity => entity.User.ManagerUserId == request.ManagerUserId.Value);
             }
             return Ok(result.ToList());
         }

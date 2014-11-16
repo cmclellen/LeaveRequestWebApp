@@ -12,11 +12,11 @@
                 </button>
                 <a class="navbar-brand" href="#" ng-bind="$parent.data.applicationName"></a>
             </div>
-
+        
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="dropdown" ng-if="data.selectedUser.userRole.name === $window.CompanyABC.Constants.UserRoles.NonManager">
+                    <li class="dropdown" ng-if="data.selectedUser.userRoleId === $window.CompanyABC.Constants.UserRole.NonManager">
                         <a class="dropdown-toggle link" data-toggle="dropdown" hover-dropdown-toggle role="button" aria-expanded="false">Actions <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a ui-sref="newLeaveRequest({userId: data.selectedUser.id})">New Request</a></li>
@@ -24,10 +24,10 @@
                         </ul>
                     </li>
                     
-                    <li class="dropdown" ng-if="data.selectedUser.userRole.name === $window.CompanyABC.Constants.UserRoles.Manager">
+                    <li class="dropdown" ng-if="data.selectedUser.userRoleId === $window.CompanyABC.Constants.UserRole.Manager">
                         <a class="dropdown-toggle link" data-toggle="dropdown" hover-dropdown-toggle role="button" aria-expanded="false">Actions <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a ui-sref="viewLeaveRequests">View All Leave Requests</a></li>
+                            <li><a ui-sref="viewLeaveRequests({managerUserId: data.selectedUser.id})">View All Leave Requests</a></li>
                         </ul>
                     </li>
                     

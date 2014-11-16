@@ -28,5 +28,9 @@ namespace CompanyABC.Data.Models.LeaveRequest
 
         [MaxLength]
         public string Comments { get; set; }
+
+        public int? LeaveRequestStatusId { get; set; }
+        [ForeignKey("LeaveRequestStatusId")]
+        public virtual LeaveRequestStatus LeaveRequestStatus { get; set; }
     }
 }

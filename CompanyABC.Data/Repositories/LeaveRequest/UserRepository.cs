@@ -15,10 +15,9 @@ namespace CompanyABC.Data.Repositories.LeaveRequest
         {
         }
 
-        public override IEnumerable<User> GetByIds(IEnumerable<int> entityIds)
+        public override IEnumerable<User> GetAll()
         {
-            return Set.Where(entity => entityIds.Contains(entity.Id))
-                .Include(s=>s.ManagerUser);
+            return Set.Include(s=>s.ManagerUser);
         }
     }
 }

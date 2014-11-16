@@ -166,6 +166,7 @@
     <Compile Include="DependencyResolution\ServiceActivator.cs" />
     <Compile Include="DependencyResolution\StructureMapDependencyScope.cs" />
     <Compile Include="DependencyResolution\StructureMapScopeModule.cs" />
+    <Compile Include="DTOs\Requests\ApproveLeaveRequestRequest.cs" />
     <Compile Include="DTOs\Requests\GetLeaveRequestsRequest.cs" />
     <Compile Include="DTOs\Responses\GetReasonsResponse.cs" />
     <Compile Include="Global.asax.cs">

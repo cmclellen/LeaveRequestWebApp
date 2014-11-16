@@ -84,9 +84,9 @@
     <Compile Include="DbMigrations\CustomSqlServerCEMigrationSqlGenerator.cs" />
     <Compile Include="DbMigrations\CustomSqlServerMigrationSqlGenerator.cs" />
     <Compile Include="DbMigrations\DefaultDbConfiguration.cs" />
-    <Compile Include="DbMigrations\LeaveRequest\201411160041031_Initial.cs" />
-    <Compile Include="DbMigrations\LeaveRequest\201411160041031_Initial.Designer.cs">
-      <DependentUpon>201411160041031_Initial.cs</DependentUpon>
+    <Compile Include="DbMigrations\LeaveRequest\201411160217200_Initial.cs" />
+    <Compile Include="DbMigrations\LeaveRequest\201411160217200_Initial.Designer.cs">
+      <DependentUpon>201411160217200_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="DbMigrations\LeaveRequest\LeaveRequestDbMigrationsConfiguration.cs" />
     <Compile Include="DbMigrations\BaseDbMigrationsConfiguration.cs" />
@@ -94,6 +94,7 @@
     <Compile Include="Models\AuditableEntity.cs" />
     <Compile Include="Models\IAuditableEntity.cs" />
     <Compile Include="Models\LeaveRequest\LeaveRequest.cs" />
+    <Compile Include="Models\LeaveRequest\LeaveRequestStatus.cs" />
     <Compile Include="Models\LeaveRequest\User.cs" />
     <Compile Include="Models\LeaveRequest\Reason.cs" />
     <Compile Include="Models\LeaveRequest\UserRole.cs" />
@@ -145,8 +146,8 @@
     <Content Include="readme.txt" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DbMigrations\LeaveRequest\201411160041031_Initial.resx">
-      <DependentUpon>201411160041031_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="DbMigrations\LeaveRequest\201411160217200_Initial.resx">
+      <DependentUpon>201411160217200_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
