@@ -3,13 +3,13 @@
     <div class="panel-body">
         <table class="table table-bordered">
             <thead>
-                <th>Username</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-                <th>Reason</th>
-                <th>Comments</th>
-                <th>Created Date</th>
-                <th>Status</th>
+            <th class="text-center">Username</th>
+            <th class="text-center">Start Date</th>
+            <th class="text-center">End Date</th>
+            <th class="text-center">Reason</th>
+            <th class="text-center">Comments</th>
+            <th class="text-center">Created Date</th>
+            <th class="text-center">Status</th>
             </thead>
             <tbody>
                 <tr ng-if="!data.leaveRequests">
@@ -20,11 +20,11 @@
                 </tr>
                 <tr ng-if="data.leaveRequests && data.leaveRequests.length > 0" ng-repeat="leaveRequest in data.leaveRequests | orderBy: 'createdDate': true">
                     <td ng-bind="leaveRequest.user.username"></td>
-                    <td ng-bind="leaveRequest.startDate"></td>
-                    <td ng-bind="leaveRequest.endDate"></td>
-                    <td ng-bind="leaveRequest.reason.name"></td>
+                    <td class="text-right" ng-bind="leaveRequest.startDate | amDateFormat: $window.CompanyABC.Constants.DateFormat"></td>
+                    <td class="text-right" ng-bind="leaveRequest.endDate | amDateFormat: $window.CompanyABC.Constants.DateFormat"></td>
+                    <td class="text-center" ng-bind="leaveRequest.reason.name"></td>
                     <td ng-bind="leaveRequest.comments"></td>
-                    <td ng-bind="leaveRequest.createdDate"></td>
+                    <td class="text-right" ng-bind="leaveRequest.createdDate | amDateFormat: $window.CompanyABC.Constants.DateTimeFormat"></td>
                     <td class="text-center">
                         <div ng-if="leaveRequest.leaveRequestStatus === null && data.userRoleId === $window.CompanyABC.Constants.UserRole.Manager">
                             <i class="glyphicon glyphicon-ok success" tooltip="Approve" ng-click="approveLeaveRequest(leaveRequest, true)"></i>

@@ -35,6 +35,7 @@ namespace CompanyABC.WebClient
             bundles.Add(new ScriptBundle("~/bundles/angular-core")
                 .Include("~/scripts/angular-ui/ui-bootstrap-tpls.js")
                 .Include("~/scripts/angular-ui-router.js")
+                .Include("~/scripts/angular-moment.js")
                 .Include("~/app/app.js")
                 .IncludeDirectory("~/app/directives", "*.js")
                 .IncludeDirectory("~/app/filters", "*.js")
@@ -42,6 +43,7 @@ namespace CompanyABC.WebClient
                 .IncludeDirectory("~/app/controllers", "*.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/misc")
+                .Include("~/scripts/moment.js")
                 .Include("~/scripts/toastr.js"));
         }
 
