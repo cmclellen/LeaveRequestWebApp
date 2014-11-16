@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.Http.Results;
 
 using CompanyABC.Core.Config;
+using CompanyABC.Core.Email;
 using CompanyABC.Core.Mappers;
 using CompanyABC.Data.Models.LeaveRequest;
 using CompanyABC.Data.Repositories.LeaveRequest.Contracts;
@@ -22,6 +23,7 @@ namespace CompanyABC.WebApi.Tests.Controllers
         private IApplicationSettings ApplicationSettings { get; set; }
         private MockRepository Mocks { get; set; }
         private IMapper Mapper { get; set; }
+        IEmailSender EmailSender { get; set; }
         private IReasonRepository ReasonRepository { get; set; }
         private IUserRepository UserRepository { get; set; }
         private IUserRoleRepository UserRoleRepository { get; set; }
@@ -33,6 +35,7 @@ namespace CompanyABC.WebApi.Tests.Controllers
             Mocks = new MockRepository();
             ApplicationSettings = Mocks.Stub<IApplicationSettings>();
             Mapper = AssemblyInitialize.Mapper;
+            EmailSender = Mocks.Stub<IEmailSender>();
             UserRepository = Mocks.Stub<IUserRepository>();
             ReasonRepository = Mocks.Stub<IReasonRepository>();
             UserRoleRepository = Mocks.Stub<IUserRoleRepository>();
@@ -43,7 +46,7 @@ namespace CompanyABC.WebApi.Tests.Controllers
         public void GetReasons_RetrievalOf_AllReasonsToBeReturned()
         {
             // ARRANGE
-            var controller = new LeaveRequestController(ApplicationSettings, Mapper, ReasonRepository, UserRepository,
+            var controller = new LeaveRequestController(ApplicationSettings, Mapper, EmailSender, ReasonRepository, UserRepository,
                 UserRoleRepository, LeaveRequestRepository);
             ReasonRepository.Expect(mock => mock.GetAll()).Return(new[]
             {

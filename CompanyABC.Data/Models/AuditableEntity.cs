@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace CompanyABC.Data.Models
 {
-    public class AuditableEntity
+    public class AuditableEntity : IAuditableEntity
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity), Column(Order = 1)]
         public int Id { get; set; }

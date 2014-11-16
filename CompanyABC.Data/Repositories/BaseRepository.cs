@@ -6,12 +6,13 @@ using System.Linq;
 using CompanyABC.Data.Contexts.Contracts;
 
 using Utils;
+using CompanyABC.Data.Models;
 
 namespace CompanyABC.Data.Repositories
 {
     public abstract class BaseRepository<TDbContext, TEntity> : IRepository<TEntity>, IDisposable
         where TDbContext : class, IDbContext
-        where TEntity : class
+        where TEntity : class, IAuditableEntity
     {
         protected BaseRepository(TDbContext dbContext)
         {
@@ -40,10 +41,16 @@ namespace CompanyABC.Data.Repositories
             return Set;
         }
 
-        public void Save(IEnumerable<TEntity> entities)
+        public IEnumerable<TEntity> GetByIds(IEnumerable<int> entityIds)
         {
-            Set.AddRange(entities);
+            return Set.Where(entity => entityIds.Contains(entity.Id));
+        }
+
+        public IEnumerable<TEntity> Save(IEnumerable<TEntity> entities)
+        {
+            entities = Set.AddRange(entities);
             DbContext.SaveChanges();
+            return entities;
         }
     }
 }

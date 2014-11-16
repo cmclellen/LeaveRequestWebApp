@@ -2,3 +2,4 @@ C:\Important\_private\LeaveRequestWebApp\CompanyABC.Core\bin\Debug\CompanyABC.Co
 C:\Important\_private\LeaveRequestWebApp\CompanyABC.Core\bin\Debug\CompanyABC.Core.pdb
 C:\Important\_private\LeaveRequestWebApp\CompanyABC.Core\obj\Debug\CompanyABC.Core.dll
 C:\Important\_private\LeaveRequestWebApp\CompanyABC.Core\obj\Debug\CompanyABC.Core.pdb
+C:\Important\_private\LeaveRequestWebApp\CompanyABC.Core\obj\Debug\CompanyABC.Core.csprojResolveAssemblyReference.cache

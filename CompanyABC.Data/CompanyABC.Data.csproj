@@ -92,6 +92,7 @@
     <Compile Include="DbMigrations\BaseDbMigrationsConfiguration.cs" />
     <Compile Include="Helpers\DbEntityValidationExceptionHelpers.cs" />
     <Compile Include="Models\AuditableEntity.cs" />
+    <Compile Include="Models\IAuditableEntity.cs" />
     <Compile Include="Models\LeaveRequest\LeaveRequest.cs" />
     <Compile Include="Models\LeaveRequest\User.cs" />
     <Compile Include="Models\LeaveRequest\Reason.cs" />

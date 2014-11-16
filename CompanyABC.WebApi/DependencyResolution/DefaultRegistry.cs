@@ -19,6 +19,7 @@ using System;
 using System.Linq;
 
 using CompanyABC.Core.Config;
+using CompanyABC.Core.Email;
 using CompanyABC.Core.Mappers;
 using CompanyABC.WebApi.Mappers;
 
@@ -40,6 +41,7 @@ namespace CompanyABC.WebApi.DependencyResolution
                 });
             For<IApplicationSettings>().Use<SystemApplicationSettings>();
             For<IMapper>().Use<AutoMapperWrapper>();
+            For<IEmailSender>().Use<SystemEmailSender>();
         }
     }
 }

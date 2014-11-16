@@ -7,5 +7,6 @@ namespace CompanyABC.Data.Repositories.LeaveRequest.Contracts
 {
     public interface IUserRepository : IRepository<User>
     {
+        
     }
 }

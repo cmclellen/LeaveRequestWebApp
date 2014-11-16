@@ -6,7 +6,8 @@ namespace CompanyABC.Data.Repositories
 {
     public interface IRepository<T>
     {
+        IEnumerable<T> GetByIds(IEnumerable<int> entityIds);
         IEnumerable<T> GetAll();
-        void Save(IEnumerable<T> entities);
+        IEnumerable<T> Save(IEnumerable<T> entities);
     }
 }

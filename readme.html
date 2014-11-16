@@ -14,10 +14,8 @@
             <dl>
                 <dt>Overview</dt>
                 <dd>
-                    <ul>
-                        <li>This solution was developed using <strong>MS Visual Studio Ultimate 2013</strong></li>
-                        <li>The data is stored in a MS Sql Server CE database</li>
-                    </ul>
+                    This application manages leave requests submitted by non-managers. Managers are notified and are then able to accept/reject leave requests.</li>
+                    <hr />    
                 </dd>
                 
                 <dt>The problem</dt>
@@ -33,15 +31,31 @@ The app will let employees request leave with a start and end date; a reason (An
 It will also allow the employee to see previous requests they have made.
 Build the proof-of-concept for requesting leave, and viewing previous leave requests.
                     </pre>
+                    <hr />
                 </dd>
-                
+
+                <dt>Reasons for choosing the technologies used</dt>
+                <dd>
+                    <ul>
+                        <li>This solution was developed using <strong>MS Visual Studio Ultimate 2013</strong></li>
+                        <li>The user facing UI is served by a web application developed using ASP.NET MVC, and that was just to try keep things simple (ease of proof of concept), but it could have been a simple ExpressJs framework as the core of the workings lie in the javascript (client side).</li>
+                        <li>The web API was developed using ASP.NET WebAPI because of it's ease of setup, deployment, etc.</li>
+                        <li>Used a SQL Server CE database because it is a standalone minimilistic database that doesn't require a SQL Server instance to be installed. Also, due to my obsession with coding by contract, the code is decoupled enough to easily write concrete implementation of the various repositories for aother databases (e.g. SQL Server, Oracle, MySql, Postgres, etc.)</li>
+                        <li>All configuration has been split out, making it easy enough for tools like MsDeploy to easily transform the configuration files for deployment to various environments (e.g. local, dev, staging, production, etc.).</li>
+                    </ul>
+                    <hr />
+                </dd>
+
                 <dt>Assumptions/Restrictions</dt>
                 <dd>
                     <ul>
                         <li>In terms of security, there is none, as I just wanted to keep it simple for this proof of concept. The dropdown at top right hand corner is the means by which the application knows what user is currently using the system.</li>
                         <li>The solution hasn't been localized (just English, and dates are stored in local time (rather than UTC))</li>
                         <li>The solution could have been developed as a single project, using simple IMDB, etc. but I just wanted to show clean separation of concerns, easily testable code, as close to proper DB design as I was able to achieve (due to restrictions with Sql Server CE), etc.</li>
+                        <li>No transactioning has been added, but this (with isolation level ReadCommitted) would be added at WebAPI level and interceptor on each of the WebAPI actions to auto commit if no errors on call.</li>
+                        <li>The email sender is currently configured to just send to localhost, so please install something like <strong>Papercut</strong> and you should see the notification once a leave request has been created.</li>
                     </ul>
+                    <hr />
                 </dd>
 
                 <dt>Running the solution</dt>
@@ -54,6 +68,7 @@ Build the proof-of-concept for requesting leave, and viewing previous leave requ
                         <li>Please ensure that the <strong>CompanyABC.WebClient</strong> project is "Set as StartUp Project"</li>
                         <li>Ensure that within the Properties of the <strong>CompanyABC.WebClient</strong> project, that under the <strong>Web</strong> tab, that <strong>Start Action</strong> is set to <strong>Specific Page</strong> (leave blank)</li>
                     </ul>
+                    <hr />
                 </dd>
             </dl>
             <div id="footer">

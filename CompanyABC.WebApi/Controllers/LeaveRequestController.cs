@@ -1,36 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Web.Http;
 
 using CompanyABC.Core.Config;
+using CompanyABC.Core.Email;
 using CompanyABC.Core.Mappers;
+using CompanyABC.Data.Models.LeaveRequest;
 using CompanyABC.Data.Repositories.LeaveRequest.Contracts;
-using CompanyABC.WebApi.DTOs;
 using CompanyABC.WebApi.DTOs.Responses;
 
 using Utils;
-
-using Reason = CompanyABC.Data.Models.LeaveRequest.Reason;
-using CompanyABC.Data.Models.LeaveRequest;
 
 namespace CompanyABC.WebApi.Controllers
 {
     [AllowAnonymous]
     public class LeaveRequestController : ApiController
     {
-        public LeaveRequestController(IApplicationSettings applicationSettings, IMapper mapper,
-            IReasonRepository reasonRepository, IUserRepository userRepository, IUserRoleRepository userRoleRepository, ILeaveRequestRepository leaveRequestRepository)
+        public LeaveRequestController(IApplicationSettings applicationSettings, IMapper mapper, IEmailSender emailSender,
+            IReasonRepository reasonRepository, IUserRepository userRepository, IUserRoleRepository userRoleRepository,
+            ILeaveRequestRepository leaveRequestRepository)
         {
+            Guard.NotNull(() => emailSender, emailSender);
             Guard.NotNull(() => mapper, mapper);
             Guard.NotNull(() => applicationSettings, applicationSettings);
             Guard.NotNull(() => userRepository, userRepository);
             Guard.NotNull(() => reasonRepository, reasonRepository);
             Guard.NotNull(() => userRoleRepository, userRoleRepository);
             Guard.NotNull(() => leaveRequestRepository, leaveRequestRepository);
-            
+
             Mapper = mapper;
             ApplicationSettings = applicationSettings;
+            EmailSender = emailSender;
 
             // Repositories
             UserRepository = userRepository;
@@ -39,6 +41,7 @@ namespace CompanyABC.WebApi.Controllers
             LeaveRequestRepository = leaveRequestRepository;
         }
 
+        private IEmailSender EmailSender { get; set; }
         private IUserRepository UserRepository { get; set; }
         private IMapper Mapper { get; set; }
         private IUserRoleRepository UserRoleRepository { get; set; }
@@ -63,11 +66,11 @@ namespace CompanyABC.WebApi.Controllers
             IEnumerable<UserRole> userRoles = UserRoleRepository.GetAll();
             return Ok(userRoles);
         }
-        
+
         [HttpGet]
         public IHttpActionResult GetUsers()
         {
-            var allUsers = UserRepository.GetAll();
+            IEnumerable<User> allUsers = UserRepository.GetAll();
             return Ok(allUsers);
         }
 
@@ -75,8 +78,31 @@ namespace CompanyABC.WebApi.Controllers
         public IHttpActionResult SaveLeaveRequests(IList<LeaveRequest> leaveRequests)
         {
             Guard.NotNull(() => leaveRequests, leaveRequests);
-            LeaveRequestRepository.Save(leaveRequests);
+            leaveRequests = LeaveRequestRepository.Save(leaveRequests).ToList();
+            var mailMessages = GetMailMessages(leaveRequests).ToList();
+            EmailSender.SendMessages(mailMessages);
             return Ok();
+        }
+
+        // TODO: To be refactored using templating engine (e.g. Razor) to generate body of email
+        private IEnumerable<MailMessage> GetMailMessages(IEnumerable<LeaveRequest> leaveRequests)
+        {
+            Guard.NotNull(() => leaveRequests, leaveRequests);
+
+            var userIds = leaveRequests.Select(request => request.UserId);
+            IList<User> users = UserRepository.GetByIds(userIds).ToList();
+            
+            foreach (var leaveRequest in leaveRequests)
+            {
+                var foundUser = users.Single(user => user.Id == leaveRequest.UserId);
+                var message = new MailMessage
+                {
+                    Subject = string.Format("Leave Request Notification from {0}", foundUser.Username),
+                    Body = string.Format("A leave request for {0} awaits your approval.", foundUser.Username)
+                };
+                message.To.Add(new MailAddress("cmclellen@gmail.com"));
+                yield return message;
+            }
         }
     }
 }
