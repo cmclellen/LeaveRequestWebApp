@@ -26,7 +26,7 @@ Reasons for choosing the technologies used
     <li>This solution was developed using <strong>MS Visual Studio Ultimate 2013</strong></li>
     <li>The user facing UI is served by a web application developed using ASP.NET MVC, and that was just to try keep things simple (ease of proof of concept), but it could have been a simple ExpressJs framework as the core of the workings lie in the javascript (client side).</li>
     <li>The web API was developed using ASP.NET WebAPI because of it's ease of setup, deployment, etc.</li>
-    <li>Used a SQL Server CE database because it is a standalone minimilistic database that doesn't require a SQL Server instance to be installed. Also, due to my obsession with coding by contract, the code is decoupled enough to easily write concrete implementation of the various repositories for aother databases (e.g. SQL Server, Oracle, MySql, Postgres, etc.)</li>
+    <li>Used a SQL Server CE database because it is a standalone minimilistic database that doesn't require a SQL Server instance to be installed. Also, due to my obsession with coding by contract, the code is decoupled enough to easily write concrete implementation of the various repositories for other databases (e.g. SQL Server, Oracle, MySql, Postgres, etc.)</li>
     <li>All configuration has been split out, making it easy enough for tools like MsDeploy to easily transform the configuration files for deployment to various environments (e.g. local, dev, staging, production, etc.).</li>
 </ul>
 
